@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :users
-  resources :recipes
+  resources :recipes 
 
   put '/recipes/:id/toggle_privacy', to: 'recipes#toggle_privacy', as: 'toggle_recipe_privacy'
 

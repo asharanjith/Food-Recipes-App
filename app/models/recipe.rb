@@ -7,4 +7,5 @@ class Recipe < ApplicationRecord
   def toggle_privacy!
     update(public: !public)
   end
+
 end

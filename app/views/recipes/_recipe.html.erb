@@ -10,7 +10,14 @@
     <%= recipe.prepration_time %>
   </p>
 
-  <%= button_to(@recipe.public? ? "public" : "private", toggle_recipe_privacy_path(@recipe), method: :put) %>
+  <%# <%= button_to(@recipe.public? ? "public" : "private", toggle_recipe_privacy_path(@recipe), method: :put) %> 
+
+<div class="form-check form-switch">
+  <%= check_box_tag "recipe_public_toggle", "", @recipe.public?, class: "form-check-input", data: { url: toggle_recipe_privacy_path(@recipe), method: :put } %>
+  <%= label_tag "recipe_public_toggle", "", class: "form-check-label" %>
+  <%= label_tag "recipe_public_toggle_label", @recipe.public? ? "Public" : "Private" %>
+</div>
+
 
 
   <p class="col">

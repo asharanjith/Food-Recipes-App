@@ -56,8 +56,8 @@ class RecipesController < ApplicationController
 
   def toggle_privacy
     @recipe = Recipe.find(params[:id])
-    @recipe.toggle!(:public)
-    redirect_to recipe_url(@recipe)
+    @recipe.toggle_privacy!
+    redirect_to recipe_path(@recipe)
   end
 
   private
