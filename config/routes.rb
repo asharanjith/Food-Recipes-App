@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :users
   resources :recipes
 
+  put '/recipes/:id/toggle_privacy', to: 'recipes#toggle_privacy', as: 'toggle_recipe_privacy'
+
 end

@@ -9,10 +9,8 @@
     <strong>Prepration time:</strong>
     <%= recipe.prepration_time %>
   </p>
-<%# <p class="col">
-    <strong>Public:</strong>
-    <%= recipe.public %>
-  <%# </p> %> 
+
+  <%= button_to(@recipe.public? ? "public" : "private", toggle_recipe_privacy_path(@recipe), method: :put) %>
 
 
   <p class="col">
