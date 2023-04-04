@@ -6,13 +6,10 @@ class Ability
     #
     return unless user.present?
 
-    can :read, :all
-<<<<<<<<< Temporary merge branch 1
-
-    can :manage, Recipe, user_id: user.id
-=========
+    can :read, :all 
+    can :manage, Recipe, user_id: user.id 
     can :create, Food
->>>>>>>>> Temporary merge branch 2
+ 
     #   return unless user.admin?
     # can :manage, :all
     #

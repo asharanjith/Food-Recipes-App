@@ -5,13 +5,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :users
-<<<<<<<<< Temporary merge branch 1
-  resources :recipes
-
-=========
-   
+  resources :users 
+  resources :recipes 
   resources :foods 
-   
->>>>>>>>> Temporary merge branch 2
+ 
 end

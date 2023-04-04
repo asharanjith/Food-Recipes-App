@@ -8,14 +8,8 @@
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
 #
-# It's strongly recommended that you check this file into your version control system.
-
-<<<<<<<<< Temporary merge branch 1
-
-ActiveRecord::Schema[7.0].define(version: 2023_04_03_094107) do
-=========
-ActiveRecord::Schema[7.0].define(version: 2023_04_03_184014) do
->>>>>>>>> Temporary merge branch 2
+# It's strongly recommended that you check this file into your version control system. 
+ActiveRecord::Schema[7.0].define(version: 2023_04_03_184014) do 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,15 +47,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_03_184014) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-<<<<<<<<< Temporary merge branch 1
+  end 
 
   add_foreign_key "recipes", "users"
   add_foreign_key "foods", "users", column: "users_id"
-=========
-  add_foreign_key "foods", "users"
->>>>>>>>> Temporary merge branch 2
+ 
+  add_foreign_key "foods", "users" 
   add_foreign_key "recipe_foods", "foods", column: "foods_id"
 
 end
