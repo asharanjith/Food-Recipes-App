@@ -6,9 +6,18 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :users 
-  resources :recipes 
-  resources :foods 
+
   resources :public_recipes, only: %i[index]
   put '/recipes/:id/toggle_privacy', to: 'recipes#toggle_privacy', as: 'toggle_recipe_privacy'
   get 'public_recipes/index'
+
+  resources :foods
+  resources :recipes do
+    resources :recipe_foods, only: [:new, :create, :destroy]
+  end
+   
+  get '/shopping_list/:recipe_id', to: 'shopping_list#index', as: 'shopping_list'
+  get '/shopping_list', to: 'shopping_list#show', as: 'general_shopping_list
+ 
+
 end

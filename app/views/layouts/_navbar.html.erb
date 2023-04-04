@@ -25,6 +25,10 @@
             <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link " %>
           </li>        
 
+        <li class="nav-item">
+          <%= link_to "Shopping_list", general_shopping_lists_path, class: "nav-link " %>
+        </li>
+
         <% else %>
 
           <li class="nav-item">
