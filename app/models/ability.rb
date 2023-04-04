@@ -8,6 +8,9 @@ class Ability
 
     can :read, :all
     can :create, Food
+ 
+
+    can :manage, Recipe, user_id: user.id
     #   return unless user.admin?
     # can :manage, :all
     #
