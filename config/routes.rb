@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   resources :recipes 
 
   put '/recipes/:id/toggle_privacy', to: 'recipes#toggle_privacy', as: 'toggle_recipe_privacy'
+  get '/shopping_lists/:recipes_id', to: 'shopping_lists#index', as: 'shopping_lists'
+  get '/shopping_lists', to: 'shopping_lists#show', as: 'general_shopping_lists'
  
 end
