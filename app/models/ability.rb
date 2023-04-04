@@ -6,9 +6,8 @@ class Ability
     #
     return unless user.present?
 
-    can :read, :all 
+    can :read, :all
     can :manage, Food, user_id: user.id
     can :manage, Recipe, user_id: user.id
-  
   end
 end
