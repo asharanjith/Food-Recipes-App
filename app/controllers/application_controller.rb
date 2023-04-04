@@ -16,5 +16,4 @@ class ApplicationController < ActionController::Base
   def public_page?
     controller_name == 'public_recipes' && action_name == 'index'
   end
-  
 end
