@@ -1,24 +1,24 @@
 <div id="<%= dom_id recipe %>">
 
-  <h3 class="text-center">
+  <h3 class="text-center mb-5">
     <%= recipe.name %>
   </h3>
-  <div class="row row-cols-2 border border-primary">
+  <div class="row row-cols-2 border border-secondary shadow p-3 mb-5 bg-body rounded">
 
     <p class="col">
       <strong>Prepration time:</strong>
       <%= recipe.prepration_time %>
     </p>
-
-    <div class="col flex">
-      <p>Public</p>
-      <%= button_to toggle_recipe_privacy_path(@recipe), method: :put, class: "switch" do %>
-        <input type="checkbox" id="recipe_privacy" name="recipe[public]" <%= @recipe.public? ? "checked" : "" %> hidden>
-        <label for="recipe_privacy"></label>
-        <%= @recipe.public? ? "public" : "private" %>
-      <% end %>
-    </div>
-
+    <% if current_user == recipe.user %>
+        <div class="col flex">
+          <p>Public</p>
+          <%= button_to toggle_recipe_privacy_path(@recipe), method: :put, class: "switch" do %>
+            <input type="checkbox" id="recipe_privacy" name="recipe[public]" <%= @recipe.public? ? "checked" : "" %> hidden>
+            <label for="recipe_privacy"></label>
+            <%= @recipe.public? ? "public" : "private" %>
+          <% end %>
+        </div>
+    <% end %>
     <p class="col">
       <strong>Cooking time:</strong>
       <%= recipe.cooking_time %>
@@ -29,12 +29,15 @@
     <%= recipe.description %>
   </p>  
 
+
 <div class="d-flex p-2 justify-content-between">
-  <%= button_to "Generate shopping list", shopping_lists_path(@recipe),class:"btn btn-primary" %>
-  <%= button_to "Add ingredient", new_recipe_recipe_food_path(@recipe),class:"btn btn-primary" %>
+  <%= button_to "Generate shopping list", root_path,class:"btn btn-secondary" %>
+  <% if current_user == recipe.user %>
+    <%= button_to "Add ingredient", root_path,class:"btn btn-secondary" %>
+  <% end %>
 </div>
 
-<hr class="border border-primary border-3 opacity-75">
+<hr class="border border-secondary border-3 opacity-75">
 
 <table class="table table-striped table-hover table-bordered text-center">
   <thead>
@@ -42,7 +45,9 @@
       <th scope="col">Food</th>
       <th scope="col">Quantity</th>
       <th scope="col">Value</th>
-      <th scope="col" colspan="2">Actions</th>
+      <% if current_user == recipe.user %>
+        <th scope="col" colspan="2">Actions</th>
+      <% end %>
     </tr>
   </thead>
    <tbody class= "table-group-divider">
