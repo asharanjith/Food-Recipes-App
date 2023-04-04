@@ -1,0 +1,25 @@
+<div class="col-10 offset-1 mt-5">
+<% if Food.any? %> 
+   <table class="table table-striped table-hover mt-5">
+      <tr>
+        <th class="text-info">Food</th>
+        <th class="text-info">Measurement unit</th>
+        <th class="text-info">Unit price</th>
+        <th class="text-info">Quantity</th>
+        <th class="text-info">Actions</th>
+      </tr>
+      <% @foods.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.measurement_unit %></td>
+          <td><%= food.price %></td>
+          <td><%= food.quantity %></td>
+          <td><%= button_to "Delete", food, method: :delete, class:"btn btn-outline-danger"%></td>
+        </tr>
+      <% end %>
+   </table>  
+<% else %>
+<h3 class="text-warning text-center">Welcome to the Food Page No Food Exists Please Added Once!</h3>
+<%end %>
+ <%= link_to 'Add New Food', new_food_path, class:"btn btn-outline-success" %>
+</div>

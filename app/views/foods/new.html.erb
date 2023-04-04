@@ -1,0 +1,21 @@
+<div class="col-4 offset-4 mt-5">
+<h3 class="text-warning text-center"> Add Food page</h3> 
+<%= form_with model: @food, url: foods_path, method: :post do |f| %>
+    
+     <%= f.label :food_name %> 
+     <%= f.text_field :name, autofocus: true, class:"form-control mt-2 mb-2" %> 
+
+     <%= f.label :measurement_unit %> 
+     <%= f.text_field :measurement_unit, class:"form-control mt-2 mb-2"  %> 
+
+     <%= f.label :price %> 
+     <%= f.text_field :price, class:"form-control mt-2 mb-2"%> 
+   
+     <%= f.label :quantity %> 
+     <%= f.number_field :quantity, class:"form-control mt-2 mb-2" %>
+     <br /> 
+     <%= f.submit "Create Food", class:"btn btn-outline-warning" %> 
+  
+<% end %>
+<%= link_to "Back to food list", foods_path, class:"offset-8 text-info" %>
+</div>

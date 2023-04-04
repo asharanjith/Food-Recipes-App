@@ -7,6 +7,7 @@ class Ability
     return unless user.present?
 
     can :read, :all
+    can :create, Food
     #   return unless user.admin?
     # can :manage, :all
     #
