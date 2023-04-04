@@ -3,9 +3,9 @@ class User < ApplicationRecord
   #  :lockable, :timeoutable, :trackable and :omniauthable
 
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :validatable 
- 
-  has_many :foods, foreign_key: 'user_id', dependent: :destroy 
+         :recoverable, :rememberable, :validatable
+
+  has_many :foods
   has_many :recipes, foreign_key: 'user_id', dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 3, maximum: 25 }
