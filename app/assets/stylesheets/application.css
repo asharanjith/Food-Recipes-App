@@ -13,3 +13,55 @@
  *= require_tree .
  *= require_self
  */
+.flex {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-bottom: 0;
+}
+
+.switch input[type="checkbox"] {
+  display: none;
+}
+
+.switch label {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  border-radius: 34px;
+  transition: background-color 0.3s;
+  background-color: #ccc;
+}
+
+.switch label::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+  background-color: white;
+  border-radius: 30px;
+  transition: transform 0.3s;
+}
+
+.switch input[type="checkbox"]:checked + label::before {
+  transform: translateX(26px);
+}
+
+.switch input[type="checkbox"]:checked + label {
+  background-color: #3cb371;
+}
+
+

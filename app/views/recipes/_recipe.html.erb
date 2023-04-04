@@ -5,29 +5,50 @@
   </h3>
   <div class="row row-cols-2 border border-primary">
 
-  <p class="col">
-    <strong>Prepration time:</strong>
-    <%= recipe.prepration_time %>
-  </p>
+    <p class="col">
+      <strong>Prepration time:</strong>
+      <%= recipe.prepration_time %>
+    </p>
 
-  <%# <%= button_to(@recipe.public? ? "public" : "private", toggle_recipe_privacy_path(@recipe), method: :put) %> 
+    <div class="col flex">
+      <p>Public</p>
+      <%= button_to toggle_recipe_privacy_path(@recipe), method: :put, class: "switch" do %>
+        <input type="checkbox" id="recipe_privacy" name="recipe[public]" <%= @recipe.public? ? "checked" : "" %> hidden>
+        <label for="recipe_privacy"></label>
+        <%= @recipe.public? ? "public" : "private" %>
+      <% end %>
+    </div>
 
-<div class="form-check form-switch">
-  <%= check_box_tag "recipe_public_toggle", "", @recipe.public?, class: "form-check-input", data: { url: toggle_recipe_privacy_path(@recipe), method: :put } %>
-  <%= label_tag "recipe_public_toggle", "", class: "form-check-label" %>
-  <%= label_tag "recipe_public_toggle_label", @recipe.public? ? "Public" : "Private" %>
-</div>
-
-
-
-  <p class="col">
-    <strong>Cooking time:</strong>
-    <%= recipe.cooking_time %>
-  </p>
-</div>
+    <p class="col">
+      <strong>Cooking time:</strong>
+      <%= recipe.cooking_time %>
+    </p>
+  </div>
   <p>
     <strong>Instructions:</strong>
     <%= recipe.description %>
   </p>  
+
+<div class="d-flex p-2 justify-content-between">
+  <%= button_to "Generate shopping list", root_path,class:"btn btn-primary" %>
+  <%= button_to "Add ingredient", root_path,class:"btn btn-primary" %>
+</div>
+
+<hr class="border border-primary border-3 opacity-75">
+
+<table class="table table-striped table-hover table-bordered text-center">
+  <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+      <th scope="col" colspan="2">Actions</th>
+    </tr>
+  </thead>
+   <tbody class= "table-group-divider">
+    <%# Add recipe_food table markup here %>
+
+  </tbody>
+</table>
 
 </div>
