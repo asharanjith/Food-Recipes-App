@@ -10,10 +10,8 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :recipe_foods, only: [:new, :create, :destroy]
   end
-   
-  get '/shopping_list/:recipe_id', to: 'shopping_list#index', as: 'shopping_list'
-  get '/shopping_list', to: 'shopping_list#show', as: 'general_shopping_list
 
   put '/recipes/:id/toggle_privacy', to: 'recipes#toggle_privacy', as: 'toggle_recipe_privacy'
- 
+  get '/shopping_lists/:recipe_id', to: 'shopping_lists#index', as: 'shopping_lists'
+  get '/shopping_lists', to: 'shopping_lists#show', as: 'general_shopping_lists'
 end
