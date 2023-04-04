@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :users
- 
+<<<<<<<<< Temporary merge branch 1
+  resources :recipes
+
+=========
    
   resources :foods 
    
- 
-  resources :recipes
-
- 
+>>>>>>>>> Temporary merge branch 2
 end

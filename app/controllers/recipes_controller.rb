@@ -54,6 +54,12 @@ class RecipesController < ApplicationController
     end
   end
 
+  def toggle_privacy
+    @recipe = Recipe.find(params[:id])
+    @recipe.toggle_privacy!
+    redirect_to recipe_path(@recipe)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
