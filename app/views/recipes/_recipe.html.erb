@@ -48,8 +48,9 @@
       <th scope="col" class="text-info" colspan="2">Actions</th> 
     </tr>
   </thead>
-   <tbody class= "table-group-divider">
-    <%# Add recipe_food table markup here %> 
+  <tbody class= "table-group-divider">
+    <%# Add recipe_food table markup here %>
+    <% if RecipeFood.any? %> 
       <% @recipe_foods.each do |food| %>
         <tr>
             <td scope="col"><%= food.food.name %></td>
@@ -59,6 +60,9 @@
         </tr>
       <% end %> 
   </tbody>
+  <% else %>
+    <h5 class="text-warning text-center">No Recipe Food Exists Please Added Once!</h5>
+  <%end %>
 </table>
 
 </div>
