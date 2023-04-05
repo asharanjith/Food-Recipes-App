@@ -36,18 +36,24 @@
 
 <hr class="border border-primary border-3 opacity-75">
 
-<table class="table table-striped table-hover table-bordered text-center">
+<table class="table table-striped table-hover table-bordered ">
   <thead>
     <tr>
-      <th scope="col">Food</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Value</th>
-      <th scope="col" colspan="2">Actions</th>
+      <th class="text-info">Food</th>
+      <th class="text-info">Quantity</th>
+      <th class="text-info">Price</th>
+      <th scope="col" colspan="2">Actions</th> 
     </tr>
   </thead>
    <tbody class= "table-group-divider">
-    <%# Add recipe_food table markup here %>
-
+    <%# Add recipe_food table markup here %> 
+      <% @recipe_foods.each do |food| %>
+        <tr>
+            <td><%= food.food.name %></td>
+            <td><%= food.quantity %><%= food.food.measurement_unit %></td>
+            <td>$<%= food.food.price*food.quantity %></td>
+        </tr>
+      <% end %> 
   </tbody>
 </table>
 
