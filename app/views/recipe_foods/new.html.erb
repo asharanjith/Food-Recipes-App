@@ -1,12 +1,12 @@
 <%= link_to "Home", "/" %>
-<%= form_with model: @recipe_food, url: recipe_recipe_foods_path do |f| %>
+<%= form_with model: @recipe_food, url:  recipe_recipe_foods_path do |f| %>
     <%= f.label :quantity %> 
     <%= f.number_field :quantity, autofocus: true, class:"form-control mt-2 mb-2" %> 
      
-    <%= f.label :food_id %>
-    <%= f.select :foods_id, @foods.map { |food| [food.name, food.id] }, class:"form-control mt-2 mb-2" %> 
-  
-    <%= f.hidden_field :recipe_id, value: @recipe_id %> 
+    <%= f.label :foods_id %>
+    <%= f.select :foods_id, @foods.to_a.map { |food| [food.name, food.id] }, class:"form-control mt-2 mb-2" %> 
+    <%= f.text_field :recipe_id  %>
+      
     <br /> 
     <%= f.submit "Add Ingredient", class:"btn btn-outline-warning mt-2" %>
 <% end %>
@@ -18,7 +18,7 @@
       <th class="text-info">Unit price</th>
       <th class="text-info">Quantity</th>
     </tr>
-    <% @foods.each do |food| %>
+    <% @foods.to_a.each do |food| %>
       <tr>
         <td><%= food.id %></td>
         <td><%= food.name %></td>
