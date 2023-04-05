@@ -36,7 +36,7 @@ class ShoppingListsController < ApplicationController
       end
     end
     @need_foods.each do |need_food|
-      new_food_id = need_food.foods_id
+      new_food_id = need_food.food_id
       new_val = Food.where(user: current_user).where(id: new_food_id).first.quantity
       quantity_needed = new_val - need_food.quantity
       next if quantity_needed >= 0
