@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+a {
+  text-decoration: none;
+}
+
 .flex {
   display: flex;
   padding: 10px;
