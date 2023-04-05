@@ -10,21 +10,20 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: "nav-link" %>
+          <%= link_to "Public recipes", public_recipes_path, class: "nav-link" %>
         </li>
         
-        <% if user_signed_in? %> 
+        <% if user_signed_in? %>
+
           <li class="nav-item">
             <%= link_to "Recipes", recipes_path, class: "nav-link" %>
           </li>    
-          
+          <li class="nav-item">
+           <%= link_to "Food", foods_path, class: "nav-link " %>
+          </li>
           <li class="nav-item">
             <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link " %>
-          </li>
-
-        <li class="nav-item">
-           <%= link_to "Food", foods_path, class: "nav-link " %>
-        </li>
+          </li>        
 
         <li class="nav-item">
           <%= link_to "Shopping_list", general_shopping_lists_path, class: "nav-link " %>
@@ -38,6 +37,7 @@
           <li class="nav-item">
             <%= link_to "Sign up", new_user_registration_path, class: "nav-link"%>
           </li>
+          
         <% end %>
       </ul>
     </div>
