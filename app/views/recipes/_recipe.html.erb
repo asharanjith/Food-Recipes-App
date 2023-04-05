@@ -31,9 +31,9 @@
 
 
 <div class="d-flex p-2 justify-content-between">
-  <%= button_to "Generate shopping list", root_path,class:"btn btn-secondary" %>
+  <%= button_to "Generate shopping list", shopping_lists_path(@recipe),class:"btn btn-secondary" %>
   <% if current_user == recipe.user %>
-    <%= button_to "Add ingredient", root_path,class:"btn btn-secondary" %>
+    <%= button_to "Add ingredient", new_recipe_recipe_food_path(@recipe),class:"btn btn-secondary" %>
   <% end %>
 </div>
 
