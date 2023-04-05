@@ -4,9 +4,9 @@
     <%= f.number_field :quantity, autofocus: true, class:"form-control mt-2 mb-2" %> 
      
     <%= f.label :food_id %>
-    <%= f.select :food_id, @foods.map { |food| [food.name, food.id] }, class:"form-control mt-2 mb-2" %> 
+    <%= f.select :foods_id, @foods.map { |food| [food.name, food.id] }, class:"form-control mt-2 mb-2" %> 
   
-    <%= f.hidden_field :recipes_id, value: @recipes_id %> 
+    <%= f.hidden_field :recipe_id, value: @recipe_id %> 
     <br /> 
     <%= f.submit "Add Ingredient", class:"btn btn-outline-warning mt-2" %>
 <% end %>
