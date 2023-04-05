@@ -5,7 +5,7 @@ class ShoppingListsController < ApplicationController
     @recipe_foods = []
     @need_foods = RecipeFood.where(recipe_id: params[:recipe_id])
     @need_foods.each do |need_food|
-      new_food_id = need_food.foods_id
+      new_food_id = need_food.food_id
       new_val = Food.where(user: current_user).where(id: new_food_id).first.quantity
       quantity_needed = new_val - need_food.quantity
       next if quantity_needed >= 0
@@ -27,7 +27,7 @@ class ShoppingListsController < ApplicationController
     @recepes.each do |recipe|
       @current_food = RecipeFood.where(recipe_id: recipe.id)
       @current_food.each do |food|
-        @ingredient = @need_foods.find { |f| f.foods_id == food.foods_id }
+        @ingredient = @need_foods.find { |f| f.food_id == food.food_id }
         if @ingredient.nil?
           @need_foods.push(food)
         else

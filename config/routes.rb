@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :foods
   resources :recipes do
-    resources :recipe_foods, only: [:new, :create, :destroy]
+    resources :recipe_foods, only: %i[new create destroy]
   end
 
   get '/shopping_lists/:recipe_id', to: 'shopping_lists#index', as: 'shopping_lists'
