@@ -1,6 +1,5 @@
 class RecipeFoodsController < ApplicationController
   def new
-    puts 'Got to new method'
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = RecipeFood.new
     @recipe_id = @recipe.id
@@ -8,10 +7,8 @@ class RecipeFoodsController < ApplicationController
   end
 
   def create
-    puts 'Got to create method'
     @recipe = Recipe.find(params[:recipe_id])
     @food = Food.find_by(user_id: current_user.id)
-
     @recipe_food = RecipeFood.new(recipe_food_params)
     respond_to do |format|
       if @recipe_food.save
@@ -20,9 +17,6 @@ class RecipeFoodsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity, notice: 'Recipe food was not created.' }
         format.json { render json: @recipe_food.errors, status: :unprocessable_entity }
-
-        puts "Error saving RecipeFood object:"
-      puts @recipe_food.errors.full_messages
       end
     end
   end

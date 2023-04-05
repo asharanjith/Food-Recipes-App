@@ -64,7 +64,10 @@
             <% if current_user == recipe.user %>
 
             <td scope="col"> 
-              <%= link_to "Delete", recipe_recipe_food_path(@recipe, food), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-outline-danger" %>
+              <%= link_to "Delete", recipe_recipe_food_path(food), data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              }, class:"btn btn-outline-danger" %>
             </td>
             <% end %>
         </tr>
