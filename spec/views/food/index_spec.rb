@@ -16,14 +16,14 @@ RSpec.describe 'Food page view', type: :feature do
     it 'Index content of food page' do
       visit '/foods'
       expect(page).to have_content('Food Recipes')
-      expect(page).to have_content('Foods By Gulalai')
+      expect(page).to have_content('Foods by Gulalai')
       expect(page).to have_content('Food Measurement unit Unit price Quantity Actions')
       expect(page).to have_content(@food.name)
       expect(page).to have_content(@food.price)
       expect(page).to have_content(@food.measurement_unit)
       expect(page).to have_content('Delete')
       expect(page).to have_content('Add New Food')
-      expect(page).to have_content('©FoodPlanner 2023')
+      expect(page).to have_content('©Food Recipes 2023')
 
       visit '/foods'
       click_link('Delete')
