@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :foods, foreign_key: 'user_id', dependent: :destroy
   has_many :recipes, foreign_key: 'user_id', dependent: :destroy
-  has_many :recipe_foods, through: :recipes
+  has_many :recipe_foods, through: :recipes, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 3, maximum: 25 }
   validates :email, presence: true, length: { minimum: 3, maximum: 105 },

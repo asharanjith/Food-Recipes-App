@@ -57,19 +57,20 @@
   <tbody class= "table-group-divider">
     <%# Add recipe_food table markup here %>
       <% @recipe_foods.each do |food| %>
+        
         <tr>  
             <td scope="col"><%= food.food.name %></td>
             <td scope="col"><%= food.quantity %><%= food.food.measurement_unit %></td>
-            <td scope="col">$<%= food.food.price*food.quantity %></td>
-            <% if current_user == recipe.user %>
+            <td scope="col">$<%= food.food.price*food.quantity %></td> 
 
             <td scope="col"> 
-              <%= link_to "Delete", recipe_recipe_food_path(food), data: {
+            <%=  food.id %>
+              <%= link_to "Delete", recipe_recipe_food_path(@recipe.id, food.id), data: {
                 turbo_method: :delete,
                 turbo_confirm: "Are you sure?"
               }, class:"btn btn-outline-danger" %>
             </td>
-            <% end %>
+             
         </tr>
       <% end %> 
   </tbody>
