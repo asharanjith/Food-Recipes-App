@@ -3,7 +3,8 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.where(user: current_user)
+    @user = current_user
+    @recipes = @user.recipes.includes(:user)
   end
 
   # GET /recipes/1 or /recipes/1.json
