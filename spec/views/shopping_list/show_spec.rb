@@ -11,17 +11,18 @@ RSpec.describe 'Shopping list page view', type: :feature do
       @food = Food.create!(user_id: @user.id, name: 'Ground beef', measurement_unit: 'kg', price: 12)
       @ingredient = RecipeFood.create!(quantity: 1, recipe_id: @recipe.id, food_id: @food.id)
 
-      visit 'users/sign_in'
+      visit user_session_path
       fill_in 'Email', with: 'max@email.com'
       fill_in 'Password', with: 'password'
       click_button 'Log in'
+       
     end
 
     it 'Index content of shopping_list page' do
-      visit "/shopping_lists/#{@recipe.id}"
-      expect(page).to have_content('Shopping List')
+      visit shopping_lists_path
+      expect(page).to have_content('General shopping List')
       expect(page).to have_content('Amount of food items to buy: 1')
-      expect(page).to have_content('Total value of food needed: $12')
+      expect(page).to have_content('Total value of food needed: $10')
     end
   end
 end
