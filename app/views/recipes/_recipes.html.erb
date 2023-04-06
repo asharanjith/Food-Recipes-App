@@ -1,6 +1,6 @@
   <% @recipes.each do |recipe| %>
     <% if recipe.user == current_user || recipe.public == true %>
-        <div class="row row-cols-2 border border-secondary shadow p-3 mb-5 bg-body rounded">
+        <div class="row row-cols-2 border border-secondary shadow p-3 mb-5 bg-body rounded opacity-75">
             <h3 class="col"><%= link_to recipe.name, recipe_path(recipe) %></h3>
             <div class="col"><%= recipe.description %></div>
             <div class="col p-2"><%= link_to "Remove", recipe_path(recipe.id), data: {
