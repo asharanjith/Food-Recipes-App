@@ -7,7 +7,7 @@
         <% @recipes.each do |recipe| %>
         <div class="row row-cols-2 border border-secondary shadow p-3 mb-5 bg-body rounded   ">
                 <h3 class="col"><%= link_to recipe.name, recipe_path(recipe) %></h3>
-                <div class="col">Total food items: <br> Total price :$</div>
+                <div class="col">Total food items:<%= recipe.recipe_foods.count %> <br> Total price :$ <%= recipe.recipe_foods.sum {|item| item.food.price * item.quantity} %></div>
                 <div class="col p-2">By: <%= recipe.user.name%></div>            
             </div>        
         <% end %>
