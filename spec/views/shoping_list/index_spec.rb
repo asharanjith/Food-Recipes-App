@@ -11,7 +11,6 @@ RSpec.describe 'Shopping list page view', type: :feature do
       @food = Food.create!(user_id: @user.id, name: 'Ground beef', measurement_unit: 'kg', price: 12)
       @ingredient = RecipeFood.create!(quantity: 1, recipe_id: @recipe.id, food_id: @food.id)
 
-
       visit 'users/sign_in'
       fill_in 'Email', with: 'max@email.com'
       fill_in 'Password', with: 'password'
