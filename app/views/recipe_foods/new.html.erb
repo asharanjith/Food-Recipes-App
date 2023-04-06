@@ -4,7 +4,7 @@
     <%= f.number_field :quantity, autofocus: true, class:"form-control mt-2 mb-2" %> 
      
     <%= f.label :food_id %>
-    <%= f.select :food_id, Food.all.map{|f| [f.name, f.id]}, {}, class:"form-control mt-2 mb-2" %>
+    <%= f.select :food_id, @food.map{|f| [f.name, f.id]}, {}, class:"form-control mt-2 mb-2" %>
      
     <%= f.hidden_field :recipe_id, value: @recipe_id %> 
     <br /> 
