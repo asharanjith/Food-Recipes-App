@@ -1,13 +1,13 @@
 <% if @recipes.length == 0 %>
- <h1>There is no public recipe yet</h1>
+ <h1 class="text-center mt-3 mb-3 text-warning">There is no public recipe yet</h1>
 <% else %>
-    <h1 class="text-center mt-3 mb-3"> Public Recipes</h1> 
+    <h1 class="text-center mt-3 mb-3 text-warning"> Public Recipes</h1> 
 
     <div id="recipes">
         <% @recipes.each do |recipe| %>
         <div class="row row-cols-2 border border-secondary shadow p-3 mb-5 bg-body rounded   ">
                 <h3 class="col"><%= link_to recipe.name, recipe_path(recipe) %></h3>
-                <div class="col">Total food items: <br> Total price :$</div>
+                <div class="col">Total food items:<%= recipe.recipe_foods.count %> <br> Total price :$ <%= recipe.recipe_foods.sum {|item| item.food.price * item.quantity} %></div>
                 <div class="col p-2">By: <%= recipe.user.name%></div>            
             </div>        
         <% end %>

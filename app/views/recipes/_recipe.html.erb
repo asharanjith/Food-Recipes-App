@@ -1,4 +1,4 @@
-<div id="<%= dom_id recipe %>">
+<div id="<%= dom_id recipe %>"> 
 
   <h3 class="text-center mb-5">
     <%= recipe.name %>
@@ -31,29 +31,52 @@
 
 
 <div class="d-flex p-2 justify-content-between">
-  <%= button_to "Generate shopping list", root_path,class:"btn btn-secondary" %>
   <% if current_user == recipe.user %>
-    <%= button_to "Add ingredient", root_path,class:"btn btn-secondary" %>
+    <%= link_to "Generate shopping list", shopping_lists_path(@recipe),class:"btn btn-secondary" %>
+
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe),class:"btn btn-secondary" %>
   <% end %>
 </div>
 
 <hr class="border border-secondary border-3 opacity-75">
 
-<table class="table table-striped table-hover table-bordered text-center">
+<table class="table table-striped table-hover table-bordered ">
+ <% if @recipe_foods.empty? %>
+      <h2>No Recipe Food found, click on add ingredient to add one</h2>
+  <% end %>
   <thead>
     <tr>
-      <th scope="col">Food</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Value</th>
+      <th scope="col" class="text-info">Food</th>
+      <th scope="col" class="text-info">Quantity</th>
+      <th scope="col" class="text-info">Price</th>
       <% if current_user == recipe.user %>
-        <th scope="col" colspan="2">Actions</th>
+      <th scope="col" class="text-info" colspan="2">Actions</th> 
       <% end %>
     </tr>
   </thead>
-   <tbody class= "table-group-divider">
+  <tbody class= "table-group-divider">
     <%# Add recipe_food table markup here %>
-
+      <% @recipe_foods.each do |food| %>
+        
+        <tr>  
+            <td scope="col"><%= food.food.name %></td>
+            <td scope="col"><%= food.quantity %><%= food.food.measurement_unit %></td>
+            <td scope="col">$<%= food.food.price*food.quantity %></td> 
+            <% if current_user == recipe.user %>
+            <td scope="col"> 
+            <%=  food.id %>
+              <%= link_to "Delete", recipe_recipe_food_path(@recipe.id, food.id), data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              }, class:"btn btn-outline-danger" %>
+            </td>
+            <% end %>   
+        </tr>
+      <% end %> 
   </tbody>
+  
 </table>
+
+
 
 </div>
