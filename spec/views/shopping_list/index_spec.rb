@@ -9,10 +9,10 @@ RSpec.describe 'Shopping list page view', type: :feature do
                                description: 'Lorem ipsum', public: true)
 
       @food = Food.create!(user_id: @user.id, name: 'Ground beef', measurement_unit: 'kg', price: 12)
-      @ingredient = RecipeFood.create!(quantity: 1, recipe_id: @recipe.id, food_id: @food.id) 
-      
+      @ingredient = RecipeFood.create!(quantity: 1, recipe_id: @recipe.id, food_id: @food.id)
+
       visit user_session_path
-      fill_in 'Email', with: 'max@email.com'
+      fill_in 'Email', with: 'test@gmail.com'
       fill_in 'Password', with: 'password'
       click_button 'Log in'
     end
