@@ -1,21 +1,22 @@
+ 
 <div class="col-10 offset-1 mt-5">
-<% if @foods.length > 0 %> 
-  <h3 class="text-warning text-center"> Foods By <%= @user.name %></h3> 
-  <table class="table table-striped table-hover table-bordered mt-5">
+<% if @foods.length > 0 %>  
+      <h3 class="text-secondary fw-semibold text-center"> Foods by <%= @user.name %></h3> 
+      <table class="table table-striped table-hover table-bordered mt-5 border border-secondary">
       <tr>
-        <th class="text-info">Food</th>
-        <th class="text-info">Measurement unit</th>
-        <th class="text-info">Unit price</th>
-        <th class="text-info">Quantity</th>
-        <th class="text-info">Actions</th>
+        <th class="text-secondary">Food</th>
+        <th class="text-secondary">Measurement unit</th>
+        <th class="text-secondary">Unit price</th>
+        <th class="text-secondary">Quantity</th>
+        <th class="text-secondary">Actions</th>
       </tr>
       <% @foods.each do |food| %>
         <tr>
-          <td><%= food.name %></td>
-          <td><%= food.measurement_unit %></td>
-          <td><%= food.price %></td>
-          <td><%= food.quantity %></td>
-          <td><%= link_to "Delete", food_path(food.id), data: {
+          <td class="text-secondary fw-semibold"><%= food.name %></td>
+          <td class="text-secondary fw-semibold"><%= food.measurement_unit %></td>
+          <td class="text-secondary fw-semibold"><%= food.price %></td>
+          <td class="text-secondary fw-semibold"><%= food.quantity %></td>
+          <td class="text-secondary fw-semibold"><%= link_to "Delete", food_path(food.id), data: {
             turbo_method: :delete,
             turbo_confirm: "Are you sure?" },class:"btn btn-outline-danger"%></td>
         </tr>

@@ -1,17 +1,17 @@
 <%= link_to "Home", "/" %>
 <%= form_with(model: @recipe_food, url: recipe_recipe_foods_path(@recipe)) do |f| %>
     <%= f.label :quantity %> 
-    <%= f.number_field :quantity, autofocus: true, class:"form-control mt-2 mb-2" %> 
+    <%= f.number_field :quantity, autofocus: true, class:"form-control mt-2 mb-2 opacity-75" %> 
      
     <%= f.label :food_id %>
-    <%= f.select :food_id, @food.map{|f| [f.name, f.id]}, {}, class:"form-control mt-2 mb-2" %>
+    <%= f.select :food_id, @food.map{|f| [f.name, f.id]}, {}, class:"form-control mt-2 mb-2 opacity-75" %>
      
     <%= f.hidden_field :recipe_id, value: @recipe_id %> 
     <br /> 
-    <%= f.submit "Add Ingredient", class:"btn btn-outline-warning mt-2" %>
+    <%= f.submit "Add Ingredient", class:"btn btn-outline-secondary mt-2 fw-semibold" %>
 <% end %>
 
-<div class="border border-secondary shadow p-3 mb-5 mt-5 bg-body rounded">
+<div class="border border-secondary shadow p-3 mb-5 mt-5 bg-body rounded opacity-75">
   <p>If ingredient is not available in the food list, please add one</p>
-  <%= link_to "Add food", new_food_path ,class:"btn btn-outline-warning mt-2" %>
+  <%= link_to "Add food", new_food_path ,class:"btn btn-outline-secondary mt-2 fw-semibold" %>
 </div>

@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+@user = User.new(name: 'Test User', email: 'test@gmail.com', password: 'password',  confirmed_at: Time.now)
+
+@recipe = Recipe.new(name: 'Lava cake', prepration_time: '10 min', cooking_time: '20 min', description: 'Description of recipe', public: false, user_id: @user.id)
+@recipe2 = Recipe.new(name: 'Lava cake', prepration_time: '10 min', cooking_time: '20 min', description: 'Description of recipe', public: true, user_id: @user.id)
