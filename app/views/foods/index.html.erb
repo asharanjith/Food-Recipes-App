@@ -1,6 +1,6 @@
-<div class="col-10 offset-1 mt-5 ">
-<% @foods.each do |food| %>
-   <% if food.user == @user %>
+ 
+<div class="col-10 offset-1 mt-5">
+<% if @foods.length > 0 %>  
       <h3 class="text-secondary fw-semibold text-center"> Foods by <%= @user.name %></h3> 
       <table class="table table-striped table-hover table-bordered mt-5 border border-secondary">
       <tr>
@@ -21,11 +21,9 @@
             turbo_confirm: "Are you sure?" },class:"btn btn-outline-danger"%></td>
         </tr>
       <% end %>
-      </table>
-    <%end %> 
-<%end %> 
-<% if @foods.length == 0 %>
-<h3 class="text-warning text-center">Welcome to the Food Page No Food Exists Please Added Once!</h3>
+  </table> 
+<% else %>
+<h3 class="text-warning text-center">Welcome to the Food Page No Food Exists Please Added Once!</h3> 
 <%end %>
  <%= link_to 'Add New Food', new_food_path, class:"btn btn-outline-success" %>
 </div>
