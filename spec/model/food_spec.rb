@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Food, type: :model do
   before(:each) do
-    @user = User.create!(email: 'max@email.com', password: 'password', name: 'Gulalai')
-    @recipe = Recipe.create!(user: @user, name: 'Ground beef', preparation_time: '10 min', cooking_time: '45 min',
+    @user = User.create!(name: 'Test User', email: 'test@gmail.com', password: 'password',
+                         password_confirmation: 'password')
+    @recipe = Recipe.create!(user: @user, name: 'Ground beef', prepration_time: '10 min', cooking_time: '45 min',
                              description: 'Lorem ipsum', public: true)
 
     @food = Food.create!(user_id: @user.id, name: 'Ground beef', measurement_unit: 'kg', price: 12)
