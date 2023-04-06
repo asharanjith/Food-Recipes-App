@@ -4,6 +4,8 @@ class Recipe < ApplicationRecord
   has_many :foods, through: :recipe_foods
 
   validates :name, presence: true, length: { minimum: 3, maximum: 25 }
+  validates :prepration_time, presence: true
+  validates :cooking_time, presence: true
   validates :description, presence: true, length: { minimum: 3, maximum: 1000 }
 
   def toggle_privacy!
