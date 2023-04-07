@@ -1,0 +1,25 @@
+<div class="col-md-4 offset-md-4 col-sm-8 offset-sm-2 mt-5">
+<h2 class="text-secondary text-center">Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %> 
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control mt-2 mb-2 opacity-75" %>
+    
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control mt-2 mb-2 opacity-75" %> 
+
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control mt-2 mb-2 opacity-75" %> 
+   
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mt-2 mb-2 opacity-75" %> 
+   
+    <%= f.submit "Sign up", class:"btn btn-outline-secondary fw-bold" %>
+   
+<% end %> 
+<%= render "devise/shared/links" %>
+</div>

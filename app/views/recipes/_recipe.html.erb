@@ -1,0 +1,82 @@
+<div id="<%= dom_id recipe %>"> 
+
+  <h3 class="text-center mb-5 text-capitalize">
+    <%= recipe.name %>
+  </h3>
+  <div class="row row-cols-2 border border-secondary shadow p-3 mb-5 bg-body rounded opacity-75">
+
+    <p class="col">
+      <strong>Prepration time:</strong>
+      <%= recipe.prepration_time %>
+    </p>
+    <% if current_user == recipe.user %>
+        <div class="col flex">
+          <p>Public</p>
+          <%= button_to toggle_recipe_privacy_path(@recipe), method: :put, class: "switch" do %>
+            <input type="checkbox" id="recipe_privacy" name="recipe[public]" <%= @recipe.public? ? "checked" : "" %> hidden>
+            <label for="recipe_privacy"></label>
+            <%= @recipe.public? ? "public" : "private" %>
+          <% end %>
+        </div>
+    <% end %>
+    <p class="col">
+      <strong>Cooking time:</strong>
+      <%= recipe.cooking_time %>
+    </p>
+  </div>
+  <p>
+    <strong>Instructions:</strong>
+    <%= recipe.description %>
+  </p>  
+
+
+<div class="d-flex p-2 justify-content-between">
+  <% if current_user == recipe.user %>
+    <%= link_to "Generate shopping list", shopping_lists_path(@recipe),class:"btn btn-secondary" %>
+
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe),class:"btn btn-secondary" %>
+  <% end %>
+</div>
+
+<hr class="border border-secondary border-3 opacity-75">
+
+<table class="table table-striped table-hover table-bordered ms-4 ">
+ <% if @recipe_foods.empty? %>
+      <h2>No Recipe Food found, click on add ingredient to add one</h2>
+  <% end %>
+  <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <% if current_user == recipe.user %>
+      <th scope="col" colspan="2">Actions</th> 
+      <% end %>
+    </tr>
+  </thead>
+  <tbody class= "table-group-divider">
+    <%# Add recipe_food table markup here %>
+      <% @recipe_foods.each do |food| %>
+        
+        <tr>  
+            <td scope="col" class=" text-capitalize fw-semibold"><%= food.food.name %></td>
+            <td scope="col"><%= food.quantity %><%= food.food.measurement_unit %></td>
+            <td scope="col">$<%= food.food.price*food.quantity %></td> 
+            <% if current_user == recipe.user %>
+            <td scope="col"> 
+            <%=  food.id %>
+              <%= link_to "Delete", recipe_recipe_food_path(@recipe.id, food.id), data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              }, class:"btn btn-outline-danger" %>
+            </td>
+            <% end %>   
+        </tr>
+      <% end %> 
+  </tbody>
+  
+</table>
+
+
+
+</div>

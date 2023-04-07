@@ -1,0 +1,19 @@
+<% if @recipes.length == 0 %>
+ <h1 class="text-center mt-3 mb-3 text-secondary">There is no public recipe yet</h1>
+<% else %>
+    <h1 class="text-center mt-3 mb-3 text-secondary"> Public Recipes</h1> 
+
+    <div id="recipes">
+        <% @recipes.each do |recipe| %>
+        <div class="row row-cols-2 border border-secondary shadow p-3 mb-5 bg-body rounded opacity-75  ">
+                <h4 class="col text-capitalize"><%= link_to recipe.name, recipe_path(recipe) %></h4>
+                <div class="col fw-bold">Total food items:<%= recipe.recipe_foods.count %> <br> Total price :$ <%= recipe.recipe_foods.sum {|item| item.food.price * item.quantity} %></div>
+                <div class="col p-2 fw-semibold">By: <%= recipe.user.name%></div>            
+            </div>        
+        <% end %>
+    </div>
+<% end %>
+
+<% if !user_signed_in? %>
+    <p class="fw-semibold"> Please <%= link_to "sign up", new_user_registration_path %> or <%= link_to "log in",user_session_path %>  to see the recipes</p>
+<% end %>

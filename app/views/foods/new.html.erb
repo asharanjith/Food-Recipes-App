@@ -1,0 +1,22 @@
+<div class="col-md-4 offset-md-4 col-sm-8 offset-sm-2 mt-5">
+<h3 class=" text-secondary fw-semibold text-center"> Add Food</h3> 
+<%= form_with model: @food, url: foods_path, method: :post do |f| %>
+    
+     <%= f.label :food_name %> 
+     <%= f.text_field :name, autofocus: true, class:"form-control mt-2 mb-2 opacity-75" %> 
+
+     <%= f.label :measurement_unit %> 
+     <%= f.text_field :measurement_unit, class:"form-control mt-2 mb-2 opacity-75"  %> 
+     
+     <%= f.label :price %> 
+     (one measurement_unit price)
+     <%= f.text_field :price, class:"form-control mt-2 mb-2 opacity-75"%> 
+   
+     <%= f.label :quantity %> 
+     <%= f.number_field :quantity, class:"form-control mt-2 mb-2 opacity-75" %>
+     <br /> 
+     <%= f.submit "Create Food", class:"btn btn-outline-secondary fw-bold" %> 
+  
+<% end %>
+<%= link_to "Back to food list", foods_path, class:"offset-8 text-secondary" %>
+</div>

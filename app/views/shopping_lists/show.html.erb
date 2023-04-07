@@ -1,0 +1,20 @@
+<h3 class="text-secondary text-center mt-4">General shopping List</h3>
+<%= link_to "Home", "/" %>
+<div class="row col-8 offset-2">
+  <p class="col-6">Amount of food items to buy: <strong><%= @recipe_foods.count %></strong></p>
+  <p class="col-6">Total value of food needed: <strong>$<%= @total_price %></strong></p>
+</div>
+<table class="table table-striped table-hover mt-5 ms-5">
+      <tr>
+        <th class="text-secondary">Food</th>
+        <th class="text-secondary">Quantity</th>
+        <th class="text-secondary">Price</th>
+      </tr>
+      <% @recipe_foods.each do |food| %>
+        <tr>
+            <td><%= food.food.name %></td>
+            <td><%= food.quantity %><%= food.food.measurement_unit %></td>
+            <td>$<%= food.food.price*food.quantity %></td>
+        </tr>
+      <% end %>
+</table>  
