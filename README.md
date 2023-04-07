@@ -50,6 +50,10 @@ The Recipe app keeps track of all your recipes, ingredients, and inventory. It w
 - **Add foods**
 - **Generate shopping items**
 
+### Live Demo <a name="live-demo"></a>
+
+[Click here to see the live demo](https://food-recipes-n92f.onrender.com)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
